@@ -32,7 +32,7 @@ fs.writeFile(`./user_folder/${id}.json`,JSON.stringify(obj), (err) =>{
 
 });
 
-//http://localhost:3000/users/verify/19712790-5f3d-11e8-b678-dfcc6890467f
+
 app.get('/user/verify/:token', (req, res) => {
     console.log(req.params.token)
     //open your files folder fs.readDir
