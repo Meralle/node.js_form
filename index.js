@@ -49,12 +49,8 @@ app.get('/admin', (req, res) => {
             adminUsers.push(parseUser);
             console.log(adminUsers);
         } 
-
-
 });
    
-   
-
   res.render('admin' ,{users: adminUsers});
 });
 
