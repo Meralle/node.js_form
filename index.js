@@ -3,10 +3,20 @@ var express = require('express');
 require('dotenv').config();
 var app = express();
 var fs = require('fs');
+app.set('view engine', 'pug');
 
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+app.get('/register', (req, res) => {
+    res.render('index' , {
+        h1:'Register',
+        label:'Email address',
+        label:'passward',
+        button:'Sign in'
+    });
+});
+
+app.get('/Route', (req, res) => {
+    res.send('Route/confirmed/users');
 })
 
 app.get('/user/create', (req, res) => {
