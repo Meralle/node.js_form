@@ -15,8 +15,8 @@ app.get('/register', (req, res) => {
     });
 });
 
-app.get('/Route', (req, res) => {
-    console.log('./confirmed/users');
+app.get('/', (req, res) => {
+    // console.log('./register/users');
     var files = fs.readdirSync('./user_folder');
     // console.log(files);
     var confirmedUsers = []; 
@@ -30,11 +30,32 @@ app.get('/Route', (req, res) => {
             console.log(confirmedUsers);
         }
     });
-    res.render('layout',{ users:confirmedUsers}); 
-        
+    res.render('register',{ users:confirmedUsers}); 
 
-    
-})
+});
+
+
+app.get('/admin', (req, res) => {
+   // console.log('./admin/users');
+   var files = fs.readdirSync('./user_folder');
+   // console.log(files); 
+   var adminUsers = [];
+   files.forEach(file => {
+    var user = fs.readFileSync('./user_folder/' + file)
+    // console.log(user);
+    let parseUser = JSON.parse(user);
+    // console.log(parseUser)
+        if(parseUser.status === 'unconfirmed' && 'confirmed'){
+            adminUsers.push(parseUser);
+            console.log(adminUsers);
+        }
+        
+});
+   
+   
+
+  res.render('admin' ,{users: adminUsers});
+});
 
 app.get('/user/create', (req, res) => {
 
@@ -76,7 +97,6 @@ app.get('/user/verify/:token', (req, res) => {
                     if (err) {
                         return console.log(err);
                     }
-
                     console.log("The email was confirmed!");
                     //redirect to /
                     res.redirect("/");

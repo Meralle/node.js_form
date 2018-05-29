@@ -1,0 +1,24 @@
+extends layout
+block content
+  body
+    .container
+      br
+      h2.card-title USERS INFO
+      .row
+        each user in users
+          .col-md-6
+            .card.mb-3
+              .card-body
+                  p#id.card-text
+                    strong
+                    | ID: #{user.uuid}
+                  hr
+                  p#email.card-text
+                    strong
+                    | EMAIL: #{user.email}
+                  hr
+                  p#statu.card-text
+                    strong
+                    | USERS: #{user.status}
+                  //- button.btn.btn-primary('type=submit') confirme
+

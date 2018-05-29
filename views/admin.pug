@@ -1,0 +1,15 @@
+extends layout
+block content
+	.container
+			.col-md-6
+				br
+				h1 All Users
+				br
+				each user in users
+					ul.list-group.list-group-flush.mb-3
+						li.list-group-item ID: #{user.uuid}
+						li.list-group-item EMAIL: #{user.email}
+						li.list-group-item STATUS: #{user.status}
+						li.list-group-item SESSION: #{user.session}
+						a.btn.btn-sm.btn-info.btn-block.w-50(href='/') confirme
+						//- button.btn.btn-sm.btn-info.btn-block(type='submit') confirme
