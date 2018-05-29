@@ -16,7 +16,24 @@ app.get('/register', (req, res) => {
 });
 
 app.get('/Route', (req, res) => {
-    res.send('Route/confirmed/users');
+    console.log('./confirmed/users');
+    var files = fs.readdirSync('./user_folder');
+    // console.log(files);
+    var confirmedUsers = []; 
+    files.forEach(file => {
+    var user = fs.readFileSync('./user_folder/' + file )
+    // console.log(user)
+    let parseUser = JSON.parse(user);
+    // console.log(parseUser)
+        if (parseUser.status !== 'unconfirmed'){
+            confirmedUsers.push(parseUser);
+            console.log(confirmedUsers);
+        }
+    });
+    res.render('layout',{ users:confirmedUsers}); 
+        
+
+    
 })
 
 app.get('/user/create', (req, res) => {
