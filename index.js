@@ -48,8 +48,9 @@ app.get('/admin', (req, res) => {
         if(parseUser.status === 'unconfirmed' && 'confirmed'){
             adminUsers.push(parseUser);
             console.log(adminUsers);
-        }
-        
+        } 
+
+
 });
    
    
@@ -99,7 +100,7 @@ app.get('/user/verify/:token', (req, res) => {
                     }
                     console.log("The email was confirmed!");
                     //redirect to /
-                    res.redirect("/");
+                    res.redirect("/admin");
                 });
             }
         };
